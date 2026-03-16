@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Expense Tracker | Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Friend Expense Tracker</h1>
+            <p class="subtitle">Personalized shared expense management</p>
+        </header>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard">
+            <div class="stat-card total">
+                <span class="stat-label">Total Expenses</span>
+                <p id="total-expenses">₹0.00</p>
+                <div class="stat-icon">💰</div>
+            </div>
+            <div class="stat-card pending">
+                <span class="stat-label">Total Pending</span>
+                <p id="total-pending">₹0.00</p>
+                <div class="stat-icon">⏳</div>
+            </div>
+            <div class="stat-card paid">
+                <span class="stat-label">Total Paid</span>
+                <p id="total-paid">₹0.00</p>
+                <div class="stat-icon">✅</div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- Left Column: Management -->
+            <aside class="sidebar">
+                <!-- Friend Management Card -->
+                <section class="card friend-mgmt">
+                    <h2>Manage Friends</h2>
+                    <form id="friend-form">
+                        <div class="form-group">
+                            <input type="text" id="new-friend-name" placeholder="Friend's Name" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Friend</button>
+                    </form>
+                    <div id="friends-list-container" class="friends-list-pills">
+                        <!-- Friend pills will be injected here -->
+                    </div>
+                </section>
+
+                <!-- Actions -->
+                <div class="actions-card">
+                    <button id="clear-all" class="btn-secondary">Clear All History</button>
+                </div>
+            </aside>
+
+            <!-- Right Column: Forms & List -->
+            <main class="content-area">
+                <!-- Add Expense Card -->
+                <section class="card expense-form-card">
+                    <h2>Add New Expense</h2>
+                    <form id="expense-form">
+                        <div class="form-group">
+                            <label for="expense-name">What was this for?</label>
+                            <input type="text" id="expense-name" placeholder="e.g. Weekend Trip, Pizza Night" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="total-amount">Total Amount (₹)</label>
+                                <input type="number" id="total-amount" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="paid-by">Who Paid?</label>
+                                <select id="paid-by" required>
+                                    <option value="" disabled selected>Select Friend</option>
+                                    <!-- Options injected from friend list -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Who was involved?</label>
+                            <div id="friends-involved-list" class="checkbox-grid">
+                                <p class="muted">Add friends first to select them here.</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary large">Create Expense</button>
+                    </form>
+                </section>
+
+                <!-- Expense History -->
+                <section class="history-section">
+                    <div class="section-header">
+                        <h2>Expense History</h2>
+                    </div>
+                    <div id="expense-list" class="expense-list">
+                        <!-- Expense cards injected here -->
+                        <div class="empty-state">
+                            <p>No expenses added yet.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
